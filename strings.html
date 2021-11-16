@@ -69,7 +69,7 @@
                 <p class="string-disc"><b>Gauge:</b> 16</p>
                 <p class="string-disc"><b>Color:</b> Clear/White</p>
             </div>
-            <div class="string-item card card">
+            <div class="string-item card">
                 <img src="Images/proform-tuff.jpg" alt="Proform Tuff" class="string-img">
                 <h1 class="string-name"><b>Proform Tuff</b></h1>
                 <h2 class="string-type">Synthetic Gut</h2>
@@ -80,7 +80,7 @@
                 <p class="string-disc"><b>Gauge:</b> 15L</p>
                 <p class="string-disc"><b>Color:</b> White</p>
             </div>
-            <div class="string-item card card">
+            <div class="string-item card">
                 <img src="Images/yonnex-polytour-pro.jpg" alt="Polytour Pro" class="string-img">
                 <h1 class="string-name"><b>Polytour Pro</b></h1>
                 <h2 class="string-type">Polyester</h2>
@@ -91,7 +91,7 @@
                 <p class="string-disc"><b>Gauge:</b> 16L</p>
                 <p class="string-disc"><b>Color:</b> Neon Yellow</p>
             </div>
-            <div class="string-item card card">
+            <div class="string-item card">
                 <img src="Images/head-lynx.jpg" alt="Lynx" class="string-img">
                 <h1 class="string-name"><b>Lynx</b></h1>
                 <h2 class="string-type">Polyester</h2>
@@ -102,7 +102,7 @@
                 <p class="string-disc"><b>Gauge:</b> 17</p>
                 <p class="string-disc"><b>Color:</b> Neon Yellow</p>
             </div>
-            <div class="string-item card card">
+            <div class="string-item card">
                 <img src="Images/wilson-nxt.jpg" alt="NXT" class="string-img">
                 <h1 class="string-name"><b>NXT</b></h1>
                 <h2 class="string-type">Multifiliment</h2>
@@ -113,7 +113,7 @@
                 <p class="string-disc"><b>Gauge:</b> 16</p>
                 <p class="string-disc"><b>Color:</b> White</p>
             </div>
-            <div class="string-item card card">
+            <div class="string-item card">
                 <img src="Images/prince-xc.jpg" alt="Prince XC" class="string-img">
                 <h1 class="string-name"><b>Prince XC</b></h1>
                 <h2 class="string-type">Polyester</h2>
@@ -124,18 +124,18 @@
                 <p class="string-disc"><b>Gauge:</b> 15L</p>
                 <p class="string-disc"><b>Color:</b> Yellow</p>
             </div>
-            <div class="string-item card card">
+            <div class="string-item card">
                 <img src="Images/pro-feel.jpg" alt="Pro Feel" class="string-img">
                 <h1 class="string-name"><b>Pro Feel</b></h1>
                 <h2 class="string-type">Co-Polyester</h2>
                 <hr>
                 <p class="string-disc">Perfect for players looking for comfort, durability, and control.</p>
-                <p class="string-disc"><b>Brand:</b> Y-Tex</p>
+                <p class="string-disc" id="power"><b>Brand:</b> Y-Tex</p>
                 <p class="string-disc"><b>Type:</b> Co-Polyester</p>
                 <p class="string-disc"><b>Gauge:</b> 16</p>
                 <p class="string-disc"><b>Color:</b> Natural</p>
             </div>
-            <div class="string-item card card">
+            <div class="string-item card">
                 <img src="Images/pentapower_twisted.jpg" alt="Pentapower" class="string-img">
                 <h1 class="string-name"><b>Pentapower</b></h1>
                 <h2 class="string-type">Co-Polyester</h2>
@@ -146,13 +146,13 @@
                 <p class="string-disc"><b>Gauge:</b> 16L</p>
                 <p class="string-disc"><b>Color:</b> Black</p>
             </div>
-            <div class="string-item card card">
+            <div class="string-item card">
                 <img src="Images/polylon.jpg" alt="Polylon" class="string-img">
                 <h1 class="string-name"><b>Polylon</b></h1>
                 <h2 class="string-type">Polyester</h2>
                 <hr>
                 <p class="string-disc">Must have polyester for big hitters looking to attack the ball.</p>
-                <p class="string-disc"><b>Brand:</b> Gosen</p>
+                <p class="string-disc" id="power"><b>Brand:</b> Gosen</p>
                 <p class="string-disc"><b>Type:</b> Polyester</p>
                 <p class="string-disc"><b>Gauge:</b> 17</p>
                 <p class="string-disc"><b>Color:</b> Clear/Yellow</p>
@@ -187,4 +187,33 @@
     </footer>
     
 </body>
+
+<script>
+
+    const stringItems = document.querySelectorAll('.string-item')
+
+    const stringInfo = [["0", "6", "7", "3"], ["0", "6", "8", "3"], ["0", "6", "7", "3"], ["5", "6", "7", "3"], ["0", "2", "7", "3"], ["0", "6", "7", "7"], ["0", "6", "7", "1"], ["2", "6", "3", "3"], ["0", "6", "1", "3"], ["0", "1", "7", "3"]]
+
+    const stringIndexes = ["Prince XP", "Prince Synth Gut", "Proform Tuff", "Polytour Pro", "Lynx", "NXT", "Prince XC", "Pro Feel", "Pentapower", "Polylon"]
+
+    stringItems.forEach(stringItem => {
+
+        const cardContent = stringItem.innerHTML
+
+        stringItem.addEventListener('mouseover', () => {
+            const stringIndex = stringIndexes.indexOf(stringItem.childNodes[3].innerText)
+
+            stringItem.childNodes[9].innerText = "Each characteristic is rated on a scale of 1-10, with 10 being the most.";
+            stringItem.childNodes[11].innerHTML = "<b>Power: </b>"  + stringInfo[stringIndex][0];
+            stringItem.childNodes[13].innerHTML = "<b>Control: </b>"  + stringInfo[stringIndex][1];
+            stringItem.childNodes[15].innerHTML = "<b>Spin: </b>"  + stringInfo[stringIndex][2];
+            stringItem.childNodes[17].innerHTML = "<b>Durability: </b>"  + stringInfo[stringIndex][3];
+        })
+
+        stringItem.addEventListener('mouseout', () => {
+            stringItem.innerHTML = cardContent;
+        })
+    })
+</script>
+
 </html>
