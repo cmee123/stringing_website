@@ -45,9 +45,15 @@
                         <h1><b>Order Information</b></h1>
                     </div>
 
-                    <div class="string-provider-selector selector-grid">
-                        <a href="" class="string-provider-btn flex">We provide string</a>
-                        <a href="" class="string-provider-btn flex">You provide string</a>
+                    <div class="selector-grid">
+
+                        <div class="string-provider-selector">
+                            <p class="string-provider-btn flex">We provide string</p>
+                        </div>
+                        <div class="string-provider-selector">
+                            <p class="string-provider-btn flex">You provide string</p>
+                        </div>
+                        
                     </div>
 
                     <div class="strings-form">
@@ -75,7 +81,7 @@
                             </div>
 
                             <div class="flex">
-                                <input type="submit" value="Continue" class="next-section-btn">
+                                <div class="next-section-btn">Continue</div>
                             </div>
 
                         </form>
@@ -88,18 +94,65 @@
             <div class="favorite-strings">
                 <div class="favorite-strings-card card">
                     <h1><b>Favorite Strings</b></h1>
-                    <hr>
+                    <hr class="black-line">
                     <ul>
                         <li>
                             <div class="string-favorite-item grid">
-                                <img src="Images/prince-xp.jpg" alt="String Img">
-                                <h2 class="fav-string-name">Prince XP</h2>
+                                <h2 class="fav-string-name"><b>Prince XP</b></h2>
                                 <p class="fav-string-type">Polyester</p>
                             </div>
+                            <hr class="gray-line">
                         </li>
-                        <li>Prince XP</li>
-                        <li>Prince XP</li>
-                        <li>Prince XP</li>
+                        <li>
+                            <div class="string-favorite-item grid">
+                                <h2 class="fav-string-name"><b>Prince XP</b></h2>
+                                <p class="fav-string-type">Polyester</p>
+                            </div>
+                            <hr class="gray-line">
+                        </li>
+                        <li>
+                            <div class="string-favorite-item grid">
+                                <h2 class="fav-string-name"><b>Prince XP</b></h2>
+                                <p class="fav-string-type">Polyester</p>
+                            </div>
+                            <hr class="gray-line">
+                        </li>
+                        <li>
+                            <div class="string-favorite-item grid">
+                                <h2 class="fav-string-name"><b>Prince XP</b></h2>
+                                <p class="fav-string-type">Polyester</p>
+                            </div>
+                            <hr class="gray-line">
+                        </li>
+                        <li>
+                            <div class="string-favorite-item grid">
+                                <h2 class="fav-string-name"><b>Prince XP</b></h2>
+                                <p class="fav-string-type">Polyester</p>
+                            </div>
+                            <hr class="gray-line">
+                        </li>
+                        <li>
+                            <div class="string-favorite-item grid">
+                                <h2 class="fav-string-name"><b>Prince XP</b></h2>
+                                <p class="fav-string-type">Polyester</p>
+                            </div>
+                            <hr class="gray-line">
+                        </li>
+                        <li>
+                            <div class="string-favorite-item grid">
+                                <h2 class="fav-string-name"><b>Prince XP</b></h2>
+                                <p class="fav-string-type">Polyester</p>
+                            </div>
+                            <hr class="gray-line">
+                        </li>
+                        <li>
+                            <div class="string-favorite-item grid">
+                                <h2 class="fav-string-name"><b>Prince XP</b></h2>
+                                <p class="fav-string-type">Polyester</p>
+                            </div>
+                            <hr class="gray-line">
+                        </li>
+                        
                     </ul>
                 </div>
             </div>
@@ -173,4 +226,41 @@
     </footer>
     
 </body>
+
+<script>
+
+    const providerSelectorItems = document.querySelectorAll('.string-provider-selector')
+    const providerSelectorList = []
+
+    providerSelectorItems.forEach(providerSelectorItem => {
+
+        providerSelectorList.push(providerSelectorItem)
+
+        providerSelectorItem.addEventListener('click', () => {
+            const ind = providerSelectorList.indexOf(providerSelectorItem)
+
+            providerSelectorItem.childNodes[1].classList.add('blue-border');
+
+            switch(ind) {
+                case 0:
+                    providerSelectorItems[1].childNodes[1].classList.remove('blue-border');
+                case 1:
+                    providerSelectorItems[0].childNodes[1].classList.remove('blue-border');
+            }
+
+            providerSelectorItem.childNodes[1].classList.add('blue-border');
+        })
+    })
+
+    const submitBtns = document.querySelectorAll('.next-section-btn')
+
+    submitBtns.forEach(submitBtn => {
+        submitBtn.addEventListener('click', () => {
+            const formContent = document.querySelector('input').value;
+            console.log(formContent);
+        })
+    })
+
+</script>
+
 </html>
