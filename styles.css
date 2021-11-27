@@ -1,3 +1,4 @@
+ 
 :root {
     --primary-color: #0041A9;
 }
@@ -305,7 +306,7 @@ ul li {
 }
 
 .strings .fav-card {
-    box-shadow: 0 3px 10px rgba(213, 216, 54, 0.815);
+    box-shadow: 0 3px 10px var(--primary-color);
 }
 
 
