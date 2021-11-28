@@ -34,168 +34,156 @@
         <h1><b>Order</b></h1>
     </section>
 
+    <!-- Progress Bar -->
+    <section class="progress-bar">
+        <div class="progress-bar-wrapper container">
+
+            <div class="progress-point">
+                <h2>Mains</h2>
+            </div>
+
+            <div class="progress-line"></div>
+
+            <div class="progress-point">
+                <h2>Crosses</h2>
+            </div>
+
+            <div class="progress-line"></div>
+
+            <div class="progress-point">
+                <h2>Finish</h2>
+            </div>
+
+        </div>
+    </section>
+
     <section class="order-page-content">
         <div class="order-page-grid container">
 
-            <!-- String Specifics -->
+            <!-- Racket Info -->
+            <div class="racket-info">
+                <div class="racket-info-section grid">
+
+                    <!-- Box Header -->
+                    <div class="racket-info-header">
+                        <div class="flex">
+                            <h1><b>Racket Information</b></h1>
+                        </div>
+                    </div>
+
+                    <!-- Box Content -->
+                    <div class="racket-info-form">
+                        <div class="racket-form-wrapper racket-form-grid">
+                            <div class="racket-details-form">
+                                <form>
+                                    <div class="form-control">
+                                        <input type="racket" name="racket-brand" placeholder="Racket Brand" required>
+                                    </div>
+                                    <div class="form-control">
+                                        <input type="racket" name="racket-model" placeholder="Racket Model" required>
+                                    </div>
+        
+                                    <div class="selector-grid">
+                                        <div class="string-provider-selector">
+                                            <p class="string-provider-btn flex">We provide string</p>
+                                        </div>
+                                        <div class="string-provider-selector">
+                                            <p class="string-provider-btn flex">You provide string</p>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            
+                            <div class="string-selector">
+                                
+                            </div>
+
+                        </div>
+
+                        <div class="done-btn">Done</div>
+                        
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Order Summary -->
             <div class="order-info">
                 <div class="order-section grid">
 
                     <div class="order-info-header flex">
-                        <h1><b>Order Information</b></h1>
-                    </div>
-
-                    <div class="selector-grid">
-
-                        <div class="string-provider-selector">
-                            <p class="string-provider-btn flex">We provide string</p>
-                        </div>
-                        <div class="string-provider-selector">
-                            <p class="string-provider-btn flex">You provide string</p>
-                        </div>
-                        
+                        <h1><b>Order Summary</b></h1>
                     </div>
 
                     <div class="strings-form">
-                        <form>
-                            <div class="string-form-wrapper string-form-grid">
-                                <div class="form-control">
-                                    <input type="racket" name="racket-brand" placeholder="Racket Brand" required>
-                                </div>
-                                <div class="form-control">
-                                    <input type="racket" name="racket-model" placeholder="Racket Model" required>
-                                </div>
-                                <div class="form-control">
-                                    <input type="main" name="main-string" placeholder="Mains String" required>
-                                </div>
-                                <div class="form-control">
-                                    <input type="main" name="main-tension" placeholder="Mains Tension (lbs)" required>
-                                </div>
-                                <div class="form-control">
-                                    <input type="cross" name="cross-string" placeholder="Cross String" required>
-                                </div>
-                                <div class="form-control">
-                                    <input type="cross" name="cross-tension" placeholder="Cross Tension (lbs)" required>
-                                </div>
-                                
-                            </div>
-
-                            <div class="flex">
-                                <div class="next-section-btn">Continue</div>
-                            </div>
-
-                        </form>
+                        <div class="flex">
+                            <div class="next-section-btn">Finish</div>
+                        </div>
                     </div>
 
                 </div>
             </div>
 
-            <!-- Favorite Strings Section -->
-            <div class="favorite-strings">
-                <div class="favorite-strings-card card">
-                    <h1><b>Favorite Strings</b></h1>
-                    <hr class="black-line">
-                    <ul>
-                        <li>
-                            <div class="string-favorite-item grid">
-                                <h2 class="fav-string-name"><b>Prince XP</b></h2>
-                                <p class="fav-string-type">Polyester</p>
-                            </div>
-                            <hr class="gray-line">
-                        </li>
-                        <li>
-                            <div class="string-favorite-item grid">
-                                <h2 class="fav-string-name"><b>Prince XP</b></h2>
-                                <p class="fav-string-type">Polyester</p>
-                            </div>
-                            <hr class="gray-line">
-                        </li>
-                        <li>
-                            <div class="string-favorite-item grid">
-                                <h2 class="fav-string-name"><b>Prince XP</b></h2>
-                                <p class="fav-string-type">Polyester</p>
-                            </div>
-                            <hr class="gray-line">
-                        </li>
-                        <li>
-                            <div class="string-favorite-item grid">
-                                <h2 class="fav-string-name"><b>Prince XP</b></h2>
-                                <p class="fav-string-type">Polyester</p>
-                            </div>
-                            <hr class="gray-line">
-                        </li>
-                        <li>
-                            <div class="string-favorite-item grid">
-                                <h2 class="fav-string-name"><b>Prince XP</b></h2>
-                                <p class="fav-string-type">Polyester</p>
-                            </div>
-                            <hr class="gray-line">
-                        </li>
-                        <li>
-                            <div class="string-favorite-item grid">
-                                <h2 class="fav-string-name"><b>Prince XP</b></h2>
-                                <p class="fav-string-type">Polyester</p>
-                            </div>
-                            <hr class="gray-line">
-                        </li>
-                        <li>
-                            <div class="string-favorite-item grid">
-                                <h2 class="fav-string-name"><b>Prince XP</b></h2>
-                                <p class="fav-string-type">Polyester</p>
-                            </div>
-                            <hr class="gray-line">
-                        </li>
-                        <li>
-                            <div class="string-favorite-item grid">
-                                <h2 class="fav-string-name"><b>Prince XP</b></h2>
-                                <p class="fav-string-type">Polyester</p>
-                            </div>
-                            <hr class="gray-line">
-                        </li>
-                        
-                    </ul>
-                </div>
+            
+
+            
+
+        </div>
+    </section>
+
+    <!-- String Selections -->
+    <section class="strings-library">
+        <div class="strings-layout grid container">
+            <div class="string-item card fav-card">
+                <img src="Images/prince-xp.jpg" alt="Prince XP" class="string-img">
+                <h1 class="string-name"><b>Prince XP</b></h1>
+                <h2 class="string-type">Polyester</h2>
             </div>
-
-            <!-- Contact Information -->
-            <div class="contact-info">
-                <div class="contact-section grid">
-
-                    <div class="contact-info-header flex">
-                        <h1><b>Contact Information</b></h1>
-                    </div>
-
-                    <div class="contact-form">
-                        <form>
-                            <div class="contact-form-wrapper contact-form-grid">
-                                <div class="form-control">
-                                    <input type="name" name="name" placeholder="Name" required>
-                                </div>
-                                <div class="form-control">
-                                    <input type="contact" name="contact" placeholder="Phone / Email" required>
-                                </div>
-                                <div class="form-control">
-                                    <input placeholder="Drop-Off Date" type="text" onfocus="(this.type='date')">
-                                </div>
-                                <div class="form-control">
-                                    <input placeholder="Pick-Up Date" type="text" onfocus="(this.type='date')">
-                                </div>
-                                <div class="form-control">
-                                    <input type="notes" name="notes/instructs" placeholder="Special Notes / Instructions" required>
-                                </div>
-                                
-                            </div>
-
-                            <div class="flex">
-                                <input type="submit" value="Finish" class="next-section-btn">
-                            </div>
-
-                        </form>
-                    </div>
-
-                </div>
+            <div class="string-item card fav-card">
+                <img src="Images/prince-synthetic-gut.jpg" alt="Prince Synth gut" class="string-img">
+                <h1 class="string-name"><b>Prince Synth Gut</b></h1>
+                <h2 class="string-type">Synthetic Gut</h2>
             </div>
-
+            <div class="string-item card">
+                <img src="Images/proform-tuff.jpg" alt="Proform Tuff" class="string-img">
+                <h1 class="string-name"><b>Proform Tuff</b></h1>
+                <h2 class="string-type">Synthetic Gut</h2>
+            </div>
+            <div class="string-item card">
+                <img src="Images/yonnex-polytour-pro.jpg" alt="Polytour Pro" class="string-img">
+                <h1 class="string-name"><b>Polytour Pro</b></h1>
+                <h2 class="string-type">Polyester</h2>
+            </div>
+            <div class="string-item card">
+                <img src="Images/head-lynx.jpg" alt="Lynx" class="string-img">
+                <h1 class="string-name"><b>Lynx</b></h1>
+                <h2 class="string-type">Polyester</h2>
+            </div>
+            <div class="string-item card">
+                <img src="Images/wilson-nxt.jpg" alt="NXT" class="string-img">
+                <h1 class="string-name"><b>NXT</b></h1>
+                <h2 class="string-type">Multifiliment</h2>
+            </div>
+            <div class="string-item card">
+                <img src="Images/prince-xc.jpg" alt="Prince XC" class="string-img">
+                <h1 class="string-name"><b>Prince XC</b></h1>
+                <h2 class="string-type">Polyester</h2>
+            </div>
+            <div class="string-item card">
+                <img src="Images/pro-feel.jpg" alt="Pro Feel" class="string-img">
+                <h1 class="string-name"><b>Pro Feel</b></h1>
+                <h2 class="string-type">Co-Polyester</h2>
+            </div>
+            <div class="string-item card">
+                <img src="Images/pentapower_twisted.jpg" alt="Pentapower" class="string-img">
+                <h1 class="string-name"><b>Pentapower</b></h1>
+                <h2 class="string-type">Co-Polyester</h2>
+            </div>
+            <div class="string-item card">
+                <img src="Images/polylon.jpg" alt="Polylon" class="string-img">
+                <h1 class="string-name"><b>Polylon</b></h1>
+                <h2 class="string-type">Polyester</h2>
+            </div>
         </div>
     </section>
 
