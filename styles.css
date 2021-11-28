@@ -1,6 +1,12 @@
 :root {
     --primary-color: #0041A9;
+    --animation1: none;
+    --animation2: none;
+    --animation3: none;
+    --line-animation1: none;
+    --line-animation2: none;
 }
+
 
 * {
     box-sizing: border-box;
@@ -430,6 +436,67 @@ ul li {
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-bar #first:before {
+    content: "";
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: var(--primary-color);
+    transform: translateX(-100%);
+    border-radius: 40%;
+    z-index: -1;
+    animation: var(--animation1);
+}
+
+.progress-bar #second:before {
+    content: "";
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: var(--primary-color);
+    transform: translateX(-100%);
+    border-radius: 40%;
+    z-index: -1;
+    animation: var(--animation2);
+    animation-delay: 3.5s;
+}
+
+.progress-bar #third:before {
+    content: "";
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: var(--primary-color);
+    transform: translateX(-100%);
+    border-radius: 40%;
+    z-index: -1;
+    animation: var(--animation3);
+}
+
+@keyframes wave {
+    from {
+        top: 70px;
+        transform: rotate(0deg);
+    }
+    to {
+        top: 70px;
+        transform: rotate(720deg);
+    }
+}
+
+@keyframes fill {
+    from {
+        top: 70px;
+        transform: translateX(0%) rotate(0deg);
+    }
+    to {
+        top: -50px;
+        transform: translateX(15%) rotate(360deg);
+    }
 }
 
 .progress-bar .progress-bar-wrapper {
@@ -450,11 +517,36 @@ ul li {
 .progress-bar .progress-line {
     width: 75px;
     height: 8px;
-    background-color: var(--primary-color);
+    background-color: transparent;
+    border: 1px var(--primary-color) solid;
+    border-left: 0px;
+    border-right: 0px;
     margin-top: auto;
     margin-bottom: auto;
+    position: relative;
+    overflow: hidden;
 }
 
+.progress-bar #first-line:before {
+    content: "";
+    position: absolute;
+    width: 75px;
+    height: 8px;
+    background: var(--primary-color);
+    transform: translateX(-100%);
+    z-index: -1;
+    animation: var(--line-animation1);
+    animation-delay: 1s;
+}
+
+@keyframes blue-line {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0%);
+    }
+}
 
 
 /* Page grid */
@@ -513,6 +605,11 @@ ul li {
     text-align: center;
 }
 
+.string-provider-selector p {
+    font-size: 14px;
+    font-weight: 900;
+}
+
 .selector-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -522,6 +619,7 @@ ul li {
     width: 90%;
     margin-left: auto;
     margin-right: auto;
+    gap: 5px;
 }
 
 .string-provider-btn {
@@ -558,7 +656,7 @@ ul li {
     padding: 3px;
     font-family: "Lato", "sans-serif";
     font-size: 16px;
-    width: 100%;
+    width: 90%;
 }
 
 .racket-info-form input:focus {
@@ -568,7 +666,7 @@ ul li {
 .racket-info-form {
     width: 90%;
     margin: auto;
-    height: 248px;
+    height: 235px;
 }
 
 .racket-info .done-btn {
@@ -582,12 +680,20 @@ ul li {
     margin-bottom: 10px;
     margin-left: auto;
     margin-right: auto;
-    font-size: 13px;
+    font-size: 14.5px;
 }
 
-.racket-info-form .done-btn:hover {
+.racket-info .done-btn:hover {
     background-color: #0058e6;
 }
+
+.racket-form-wrapper .grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    height: 200px;
+}
+
+
 
 /* String Library */
 
