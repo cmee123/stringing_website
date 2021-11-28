@@ -38,19 +38,19 @@
     <section class="progress-bar">
         <div class="progress-bar-wrapper container">
 
-            <div class="progress-point">
+            <div class="progress-point" id="first">
                 <h2>Mains</h2>
             </div>
 
-            <div class="progress-line"></div>
+            <div class="progress-line" id="first-line"></div>
 
-            <div class="progress-point">
+            <div class="progress-point" id="second">
                 <h2>Crosses</h2>
             </div>
 
-            <div class="progress-line"></div>
+            <div class="progress-line" id="second-line"></div>
 
-            <div class="progress-point">
+            <div class="progress-point" id="third">
                 <h2>Finish</h2>
             </div>
 
@@ -74,35 +74,35 @@
                     <!-- Box Content -->
                     <div class="racket-info-form">
                         <div class="racket-form-wrapper racket-form-grid">
-                            <div class="racket-details-form">
+
+                            <div class="racket-details-form grid">
                                 <form>
                                     <div class="form-control">
                                         <input type="racket" name="racket-brand" placeholder="Racket Brand" required>
                                     </div>
+                                </form>
+                                <form>
                                     <div class="form-control">
                                         <input type="racket" name="racket-model" placeholder="Racket Model" required>
                                     </div>
-        
-                                    <div class="selector-grid">
-                                        <div class="string-provider-selector">
-                                            <p class="string-provider-btn flex">We provide string</p>
-                                        </div>
-                                        <div class="string-provider-selector">
-                                            <p class="string-provider-btn flex">You provide string</p>
-                                        </div>
-                                    </div>
                                 </form>
+                                <div class="selector-grid">
+                                    <div class="string-provider-selector">
+                                        <p class="string-provider-btn flex">We provide string</p>
+                                    </div>
+                                    <div class="string-provider-selector">
+                                        <p class="string-provider-btn flex">You provide string</p>
+                                    </div>
+                                </div>
                             </div>
                             
-                            <div class="string-selector">
-                                
-                            </div>
+                            <div class="string-selector"></div>
 
                         </div>
 
-                        <div class="done-btn">Done</div>
-                        
                     </div>
+
+                    <div class="done-btn">Done</div>
 
                 </div>
             </div>
@@ -217,6 +217,10 @@
 
 <script>
 
+    const root = document.querySelector(":root");
+    root.style.setProperty("--animation1", 'wave 6s linear infinite');
+
+    // Put borders around selector items
     const providerSelectorItems = document.querySelectorAll('.string-provider-selector')
     const providerSelectorList = []
 
@@ -240,14 +244,25 @@
         })
     })
 
-    const submitBtns = document.querySelectorAll('.next-section-btn')
+
+    // get form content when "done" is pressed
+    const submitBtns = document.querySelectorAll('.done-btn')
 
     submitBtns.forEach(submitBtn => {
         submitBtn.addEventListener('click', () => {
+
+            // Trigger animations for the progress bar
+            root.style.setProperty("--animation1", 'fill 3s ease-in-out forwards');
+            document.getElementById("first").style.color = "#fff";
+            root.style.setProperty("--line-animation1", 'blue-line 2s ease-in-out forwards');
+            root.style.setProperty("--animation2", 'wave 6s linear infinite');
+
             const formContent = document.querySelector('input').value;
             console.log(formContent);
         })
     })
+
+
 
 </script>
 
