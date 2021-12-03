@@ -332,16 +332,38 @@ ul li {
     margin-right: auto;
 }
 
-
 .strings .card {
     width: 90%;
-    transition: transform 0.2s ease-in;
+    height: 525px;
     margin-bottom: 20px;
     margin-top: 20px;
+    background-color: transparent;
+    perspective: 1000px;
 }
 
-.strings .card:hover {
-    transform: scale(1.02);
+.strings .card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.strings .card:hover .card-inner {
+    transform: rotateY(180deg);
+}
+
+.strings .front, .strings .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+}
+
+.strings .back {
+    transform: rotateY(180deg);
 }
 
 .strings hr {
@@ -691,6 +713,91 @@ ul li {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr 1fr;
     height: 200px;
+}
+
+
+/* Order Info Section */
+
+.order-info {
+    height: 100%;
+}
+
+.order-info .grid {
+    grid-template-columns: 1fr;
+    gap: 5px;
+}
+
+.order-info-section {
+    border: 2px solid rgb(192, 192, 192);
+    border-top: 0px;
+}
+
+/* Box Header */
+.order-info-header {
+    color: #000;
+    background: rgb(184, 184, 184);
+}
+
+.order-info .order-info-header {
+    height: 70px;
+}
+
+/* Box Content */
+
+.order-info-content {
+    width: 95%;
+    margin: auto;
+    height: 200px;
+}
+
+.order-info-wrapper {
+    width: 100%;
+    text-align: left;
+    height: 200px;
+}
+
+.order-info-content .order-summary-list {
+    max-height: 200px;
+    overflow-y: scroll;
+}
+
+.order-info-wrapper .spacer {
+    height: 12.5px;
+}
+
+.order-info-wrapper .small-spacer {
+    height: 5px;
+}
+
+.order-info-wrapper p {
+    font-size: 14.5px;
+}
+
+.order-info .total {
+    height: 30px;
+    text-align: left;
+    align-self: center;
+    justify-self: center;
+    width: 95%;
+}
+
+
+.order-info .finish-btn {
+    display: inline-block;
+    padding: 12.5px 30px;
+    cursor: pointer;
+    background: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 14.5px;
+}
+
+.order-info .finish-btn:hover {
+    background-color: #0058e6;
 }
 
 
