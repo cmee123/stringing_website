@@ -149,19 +149,66 @@
 
                     <div class="total"><h4>Total: $100.00</h4></div>
 
-                    <div class="finish-btn">Complete</div>
+                    <div class="finish-btn" id="finishBtn">Complete</div>
 
 
 
                 </div>
             </div>
 
-            
-
-            
-
         </div>
     </section>
+
+    <div class="spacer"></div>
+
+    <section class="order-help container">
+        <div class="order-help-wrapper card">
+            <h2><b>Need help with your order?</b></h2>
+            <p>Contact us with any questions you have regarding your order, and we will get back to you as soon as possible.</p>
+            <div class="flex">
+                <div class="helpBtn" id="helpBtn">Contact Us</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="help-dialog" id="helpDialog">
+        <div class="dialog-content">
+            <span class="close1">&times;</span>
+            <div class="dialog-header">
+                <h1><b>How can we help?</b></h1>
+                <p>Message us with your questions</p>
+            </div>
+            <div class="spacer"></div>
+            <div class="help-dialog-form">
+                <form>
+                    <div class="grid">
+                        <div class="form-control">
+                            <input type="name" name="first-name" placeholder="First Name" required>
+                        </div>
+                        <div class="form-control">
+                            <input type="name" name="last-name" placeholder="Last Name" required>
+                        </div>
+                    </div>
+                    <div class="form-control">
+                        <div class="flex">
+                            <input type="contact" name="phone-email" placeholder="Phone/Email" required>
+                        </div>
+                    </div>
+                    <div class="form-control">
+                        <textarea name="message" placeholder="Message" rows="4" cols="35"></textarea>
+                    </div>
+                    <div class="flex">
+                        <div class="send-btn">Send Message</div>
+                    </div>
+                </form>
+            </div>
+        </div> 
+        
+
+        
+    </div>
+
+    <div class="spacer"></div>
 
     <!-- String Selections -->
     <section class="strings-library">
@@ -218,6 +265,13 @@
             </div>
         </div>
     </section>
+
+    <div class="complete-dialog" id="completeDialog">
+        <div class="dialog-content">
+            <span class="close">&times;</span>
+            <p>Some text..</p>
+          </div>        
+    </div>
 
 
     <!-- Footer -->
@@ -293,6 +347,60 @@
             console.log(formContent);
         })
     })
+
+    //Code for opening dialog box
+    // Get the dialog box
+    var dialog = document.getElementById("completeDialog");
+
+    // Get the button that opens the dialog box
+    var btn = document.getElementById("finishBtn");
+
+    // Get the <span> element that closes the dialog box
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on the button, open the dialog box
+    btn.onclick = function() {
+    dialog.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the dialog box
+    span.onclick = function() {
+    dialog.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the dialog box, close it
+    window.onclick = function(event) {
+    if (event.target == dialog) {
+        dialog.style.display = "none";
+    }}
+
+
+    //Code for opening contact dialog box
+    // Get the dialog box
+    var helpDialog = document.getElementById("helpDialog");
+    console.log(dialog);
+
+    // Get the button that opens the dialog box
+    var helpBtn1 = document.getElementById("helpBtn");
+
+    // Get the <span> element that closes the dialog box
+    var span1 = document.getElementsByClassName("close1")[0];
+
+    // When the user clicks on the button, open the dialog box
+    helpBtn1.onclick = function() {
+        helpDialog.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the dialog box
+    span1.onclick = function() {
+        helpDialog.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the dialog box, close it
+    window.onclick = function(event) {
+    if (event.target == helpDialog) {
+        helpDialog.style.display = "none";
+    }}
 
 
 
