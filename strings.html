@@ -39,9 +39,46 @@
             <div class="strings-showcase-card card">
                 <h2><b>Want string we don't have in stock?</b></h2>
                 <p>Contact us with the product details, and we will order it as soon as possible. Depending on your choice, prices may be higher and the turnaround time may be slightly longer.</p>
+                <div class="flex">
+                    <div class="helpBtn" id="helpBtn">Contact Us</div>
+                </div>
             </div>
         </div>
     </section>
+
+    <div class="help-dialog" id="helpDialog">
+        <div class="dialog-content">
+            <span class="close1">&times;</span>
+            <div class="dialog-header">
+                <h1><b>How can we help?</b></h1>
+                <p>Message us with your questions</p>
+            </div>
+            <div class="spacer"></div>
+            <div class="help-dialog-form">
+                <form>
+                    <div class="grid">
+                        <div class="form-control">
+                            <input type="name" name="first-name" placeholder="First Name" required>
+                        </div>
+                        <div class="form-control">
+                            <input type="name" name="last-name" placeholder="Last Name" required>
+                        </div>
+                    </div>
+                    <div class="form-control">
+                        <div class="flex">
+                            <input type="contact" name="phone-email" placeholder="Phone/Email" required>
+                        </div>
+                    </div>
+                    <div class="form-control">
+                        <textarea name="message" placeholder="Message" rows="4" cols="35"></textarea>
+                    </div>
+                    <div class="flex">
+                        <div class="send-btn">Send Message</div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
     <!-- Strings Layout -->
 
@@ -340,31 +377,31 @@
 </body>
 
 <script>
-    /*
-    const stringItems = document.querySelectorAll('.string-item')
+    //Code for opening contact dialog box
+    // Get the dialog box
+    var helpDialog = document.getElementById("helpDialog");
 
-    const stringInfo = [["0", "6", "7", "3"], ["0", "6", "8", "3"], ["0", "6", "7", "3"], ["5", "6", "7", "3"], ["0", "2", "7", "3"], ["0", "6", "7", "7"], ["0", "6", "7", "1"], ["2", "6", "3", "3"], ["0", "6", "1", "3"], ["0", "1", "7", "3"]]
+    // Get the button that opens the dialog box
+    var helpBtn1 = document.getElementById("helpBtn");
 
-    const stringIndexes = ["Prince XP", "Prince Synth Gut", "Proform Tuff", "Polytour Pro", "Lynx", "NXT", "Prince XC", "Pro Feel", "Pentapower", "Polylon"]
+    // Get the <span> element that closes the dialog box
+    var span1 = document.getElementsByClassName("close1")[0];
 
-    stringItems.forEach(stringItem => {
+    // When the user clicks on the button, open the dialog box
+    helpBtn1.onclick = function() {
+        helpDialog.style.display = "block";
+    }
 
-        const cardContent = stringItem.innerHTML
+    // When the user clicks on <span> (x), close the dialog box
+    span1.onclick = function() {
+        helpDialog.style.display = "none";
+    }
 
-        stringItem.addEventListener('mouseover', () => {
-            const stringIndex = stringIndexes.indexOf(stringItem.childNodes[3].innerText)
-
-            stringItem.childNodes[9].innerText = "Each characteristic is rated on a scale of 1-10, with 10 being the most.";
-            stringItem.childNodes[11].innerHTML = "<b>Power: </b>"  + stringInfo[stringIndex][0];
-            stringItem.childNodes[13].innerHTML = "<b>Control: </b>"  + stringInfo[stringIndex][1];
-            stringItem.childNodes[15].innerHTML = "<b>Spin: </b>"  + stringInfo[stringIndex][2];
-            stringItem.childNodes[17].innerHTML = "<b>Durability: </b>"  + stringInfo[stringIndex][3];
-        })
-
-        stringItem.addEventListener('mouseout', () => {
-            stringItem.innerHTML = cardContent;
-        })
-    }) */
+    // When the user clicks anywhere outside of the dialog box, close it
+    window.onclick = function(event) {
+    if (event.target == helpDialog) {
+        helpDialog.style.display = "none";
+    }}
 
     console.log("hello");
 
