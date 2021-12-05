@@ -101,22 +101,6 @@ ul li {
     color: #333;
 }
 
-.btn-showcase {
-    display: inline-block;
-    padding: 10px 30px;
-    cursor: pointer;
-    background: transparent;
-    color: var(--primary-color);
-    border: 1px var(--primary-color) solid;
-    border-radius: 5px;
-    transition: background-color 0.15s ease-out;
-}
-
-.btn-showcase:hover {
-    color: #fff;
-    background-color: var(--primary-color);
-}
-
 
 /* Blurb */
 
@@ -209,7 +193,7 @@ ul li {
     text-align: center;
 }
 
-.pages-showcase .btn-showcase {
+.pages-showcase .blue-outline-button {
     margin-top: 20px;
 }
 
@@ -308,10 +292,6 @@ ul li {
 
 .strings-showcase-card {
     width: auto;
-}
-
-.strings-showcase .helpBtn {
-    margin-top: 0px;
 }
 
 .strings .fav-card {
@@ -503,28 +483,6 @@ ul li {
     animation: var(--animation3);
 }
 
-@keyframes wave {
-    from {
-        top: 70px;
-        transform: rotate(0deg);
-    }
-    to {
-        top: 70px;
-        transform: rotate(720deg);
-    }
-}
-
-@keyframes fill {
-    from {
-        top: 70px;
-        transform: translateX(0%) rotate(0deg);
-    }
-    to {
-        top: -50px;
-        transform: translateX(15%) rotate(360deg);
-    }
-}
-
 .progress-bar .progress-bar-wrapper {
     display: flex;
     justify-content: center;
@@ -565,27 +523,14 @@ ul li {
     animation-delay: 1s;
 }
 
-@keyframes blue-line {
-    from {
-        transform: translateX(-100%);
-    }
-    to {
-        transform: translateX(0%);
-    }
-}
-
 
 /* Page grid */
 
 .order-page-grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr;
     gap: 10px;
-    justify-content: center;
     height: 375px;
-    margin-top: auto;
-    margin-bottom: auto;
 }
 
 .order-page-grid > *:first-child {
@@ -594,14 +539,6 @@ ul li {
 
 
 /* Racket Info Section */
-
-.racket-info {
-    height: 100%;
-}
-
-.racket-info .grid {
-    grid-template-columns: 1fr;
-}
 
 .racket-info-section {
     border: 2px solid rgb(192, 192, 192);
@@ -622,6 +559,7 @@ ul li {
 
 .racket-info .grid {
     gap: 5px;
+    grid-template-columns: 1fr;
 }
 
 .string-provider-selector {
@@ -672,45 +610,10 @@ ul li {
     text-align: center;
 }
 
-.form-control {
-    width: 100%;
-}
-
-.racket-info-form input[type="racket"] {
-    border: 0;
-    border-bottom: 1px solid #b4becb;
-    padding: 3px;
-    font-family: "Lato", "sans-serif";
-    font-size: 16px;
-    width: 90%;
-}
-
-.racket-info-form input:focus {
-    outline: none;
-}
-
 .racket-info-form {
     width: 90%;
     margin: auto;
     height: 235px;
-}
-
-.racket-info .done-btn {
-    display: inline-block;
-    padding: 12.5px 30px;
-    cursor: pointer;
-    background: var(--primary-color);
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 14.5px;
-}
-
-.racket-info .done-btn:hover {
-    background-color: #0058e6;
 }
 
 .racket-form-wrapper .grid {
@@ -785,26 +688,6 @@ ul li {
     width: 95%;
 }
 
-
-.order-info .finish-btn {
-    display: inline-block;
-    padding: 12.5px 30px;
-    cursor: pointer;
-    background: var(--primary-color);
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 14.5px;
-}
-
-.order-info .finish-btn:hover {
-    background-color: #0058e6;
-}
-
-
 /* Pop up Dialog */
 .complete-dialog {
     display: none; /* Hidden by default */
@@ -819,30 +702,63 @@ ul li {
     background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
-.dialog-content {
+.complete-dialog .complete-dialog-content {
     background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
+    margin: 5% auto; /* 15% from the top and centered */
     padding: 20px;
-    border: 1px solid #888;
+    border-radius: 25px;
     width: 80%; /* Could be more or less, depending on screen size */
 }
-  
 
-.close, .close1 {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
+.complete-dialog h1 {
+    color: var(--primary-color);
+    text-align: center;
 }
 
-.close:hover,
-.close:focus,
-.close1:hover,
-.close1:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
+.complete-dialog p {
+    font-size: 20px;
+    text-align: center;
 }
+
+.complete-dialog .order-complete-screen p {
+    margin-bottom: 20px;
+}
+
+.complete-dialog-form {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.complete-dialog .grid {
+    width: 100%;
+    justify-content: center;
+}
+
+.complete-dialog-form .form-input-field-complete {
+    margin-bottom: 20px;
+}
+
+.complete-dialog-form textarea:focus {
+    outline: none;
+    border: 1.5px solid var(--primary-color);
+}
+
+.complete-dialog .solid-blue-button {
+    margin-top: 10px;
+}
+
+.complete-dialog .completing-order-screen {
+    display: none;
+}
+
+.complete-dialog .order-complete-screen {
+    display: none;
+}
+
+
+
+
 
 /* Help Section */
 .order-help .card {
@@ -921,6 +837,37 @@ ul li {
 
 /* Animations */
 
+@keyframes wave {
+    from {
+        top: 70px;
+        transform: rotate(0deg);
+    }
+    to {
+        top: 70px;
+        transform: rotate(720deg);
+    }
+}
+
+@keyframes fill {
+    from {
+        top: 70px;
+        transform: translateX(0%) rotate(0deg);
+    }
+    to {
+        top: -50px;
+        transform: translateX(15%) rotate(360deg);
+    }
+}
+
+@keyframes blue-line {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0%);
+    }
+}
+
 @keyframes slideInLeftStats {
     0% {
         transform: translateX(-100%) skewY(-3deg);
@@ -977,7 +924,18 @@ ul li {
     100% {
         opacity: 1;
     }
-    
+}
+
+@keyframes right{
+    100% {
+    transform: rotate(180deg);
+    }
+}
+
+@keyframes left{
+    100%{
+        transform: rotate(180deg);
+    }
 }
 
 
@@ -1024,7 +982,7 @@ ul li {
     border: 2px solid var(--primary-color);
 }
 
-.helpBtn {
+.blue-outline-button {
     display: inline-block;
     padding: 10px 30px;
     cursor: pointer;
@@ -1033,15 +991,75 @@ ul li {
     border: 1px var(--primary-color) solid;
     border-radius: 5px;
     transition: background-color 0.15s ease-out;
-    margin-top: 10px;
+    margin-top: 0px;
 }
 
-.helpBtn:hover {
+.blue-outline-button:hover {
     color: #fff;
     background-color: var(--primary-color);
 }
 
-/* Pop up Dialog */
+.solid-blue-button {
+    display: inline-block;
+    padding: 12.5px 30px;
+    cursor: pointer;
+    background: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0px;
+    font-size: 14.5px;
+}
+
+.solid-blue-button:hover {
+    background-color: #0058e6;
+}
+
+.form-input-field {
+    border: 0;
+    border-bottom: 1.5px solid #b4becb;
+    padding: 3px;
+    font-family: "Lato", "sans-serif";
+    font-size: 16px;
+    width: 100%;
+}
+
+.form-input-field:focus {
+    outline: none;
+    border-bottom: 1.5px solid var(--primary-color);
+}
+
+.form-input-field-complete {
+    border: 0;
+    border-bottom: 1.5px solid #b4becb;
+    padding: 3px;
+    font-family: "Lato", "sans-serif";
+    font-size: 16px;
+    width: 100%;
+}
+
+.form-input-field-complete:focus {
+    outline: none;
+    border-bottom: 1.5px solid var(--primary-color);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Message Dialog */
 .help-dialog {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
@@ -1057,9 +1075,28 @@ ul li {
 
 .help-dialog .dialog-content {
     background-color: #fefefe;
-    border: 1px solid #888;
+    margin: 10% auto; /* 15% from the top and centered */
+    padding: 20px;
     border-radius: 25px;
     width: 80%; /* Could be more or less, depending on screen size */
+}
+
+.close1,
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    margin-right: 15px;
+}
+  
+.close1:hover,
+.close1:focus,
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 .help-dialog h1 {
@@ -1083,33 +1120,8 @@ ul li {
     justify-content: center;
 }
 
-.help-dialog-form input[type="name"], 
-input[type="contact"], 
-input[name="message"] {
-    border: 0;
-    border-bottom: 1.5px solid #b4becb;
-    padding: 3px;
-    font-family: "Lato", "sans-serif";
-    font-size: 16px;
-    width: 100%;
+.help-dialog-form .form-input-field {
     margin-bottom: 20px;
-}
-
-.help-dialog-form textarea {
-    border: 1.5px solid #b4becb;
-    padding: 3px;
-    font-family: "Lato", "sans-serif";
-    font-size: 16px;
-    width: 100%;
-}
-
-.help-dialog-form input[type="contact"] {
-    width: 100%;
-}
-
-.help-dialog-form input:focus {
-    outline: none;
-    border-bottom: 1.5px solid var(--primary-color);
 }
 
 .help-dialog-form textarea:focus {
@@ -1117,22 +1129,78 @@ input[name="message"] {
     border: 1.5px solid var(--primary-color);
 }
 
-.help-dialog .send-btn {
-    display: inline-block;
-    padding: 12.5px 30px;
-    cursor: pointer;
-    background: var(--primary-color);
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    margin-bottom: 10px;
+.help-dialog .solid-blue-button {
+    margin-top: 10px;
+}
+
+.help-dialog .sending-screen {
+    display: none;
+    height: 252.78px;
+}
+
+.help-dialog .sending-screen p {
+    margin-top: 30px;
+}
+
+
+/* Dialog loading animation */
+.circular {
+    height:100px;
+    width: 100px;
+    position: relative;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 10px;
-    font-size: 14.5px;
 }
 
-.help-dialog .send-btn:hover {
-    background-color: #0058e6;
+.circular .inner {
+    position: absolute;
+    z-index: 6;
+    top: 50%;
+    left: 50%;
+    height: 80px;
+    width: 80px;
+    margin: -40px 0 0 -40px;
+    background: #fff;
+    border-radius: 100%;
 }
 
+.circular .bar {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: #fff;
+    border-radius: 100%;
+    clip: rect(0px, 100px, 100px, 50px);
+}
+
+.circle .bar .progress {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border-radius: 100%;
+    clip: rect(0px, 50px, 100px, 0px);
+    background: var(--primary-color);
+}
+
+.circle .left .progress {
+    z-index:1;
+    animation: left 1s linear both;
+}
+
+.circle .right {
+    transform: rotate(180deg);
+    z-index:3;
+}
+.circle .right .progress {
+animation: right 1s linear both;
+animation-delay: 1s;
+}
+
+/* Dialog message sent screen */
+.help-dialog .finished-screen {
+    display: none;
+}
+
+.finished-screen .solid-blue-button {
+    margin-top: 30px;
+}
