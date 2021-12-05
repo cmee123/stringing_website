@@ -40,7 +40,7 @@
                 <h2><b>Want string we don't have in stock?</b></h2>
                 <p>Contact us with the product details, and we will order it as soon as possible. Depending on your choice, prices may be higher and the turnaround time may be slightly longer.</p>
                 <div class="flex">
-                    <div class="helpBtn" id="helpBtn">Contact Us</div>
+                    <div class="blue-outline-button" id="helpBtn">Contact Us</div>
                 </div>
             </div>
         </div>
@@ -54,28 +54,49 @@
                 <p>Message us with your questions</p>
             </div>
             <div class="spacer"></div>
-            <div class="help-dialog-form">
+            <div class="help-dialog-form" id="helpDialogForm">
                 <form>
                     <div class="grid">
                         <div class="form-control">
-                            <input type="name" name="first-name" placeholder="First Name" required>
+                            <input class="form-input-field" type="name" name="first-name" placeholder="First Name" required>
                         </div>
                         <div class="form-control">
-                            <input type="name" name="last-name" placeholder="Last Name" required>
+                            <input class="form-input-field" type="name" name="last-name" placeholder="Last Name" required>
                         </div>
                     </div>
                     <div class="form-control">
                         <div class="flex">
-                            <input type="contact" name="phone-email" placeholder="Phone/Email" required>
+                            <input class="form-input-field" type="contact" name="phone-email" placeholder="Phone/Email" required>
                         </div>
                     </div>
                     <div class="form-control">
-                        <textarea name="message" placeholder="Message" rows="4" cols="35"></textarea>
+                        <textarea class="form-input-field" name="message" placeholder="Message" rows="4" cols="35"></textarea>
                     </div>
                     <div class="flex">
-                        <div class="send-btn">Send Message</div>
+                        <div class="solid-blue-button" id="sendBtn">Send Message</div>
                     </div>
                 </form>
+            </div>
+            <div class="sending-screen" id="sendingScreen">
+                <div class="circular">
+                    <div class="inner"></div>
+                    <div class="circle">
+                       <div class="bar left">
+                          <div class="progress"></div>
+                       </div>
+                       <div class="bar right" id="progressBar">
+                          <div class="progress"></div>
+                       </div>
+                     </div>
+                  </div>
+                <p>Sending Message...</p>
+            </div>
+            <div class="finished-screen" id="finishedScreen">
+                <p>Message Sent!</p>
+                <p>We will get back to you as soon as possible.</p>
+                <div class="flex">
+                    <div class="solid-blue-button" id="closeBtn">Close</div>
+                </div>
             </div>
         </div>
     </div>
@@ -377,15 +398,38 @@
 </body>
 
 <script>
+
+    // List to hold question form inputs
+    var helpQuestion = [];
+    var inputFields = [];
+
     //Code for opening contact dialog box
     // Get the dialog box
     var helpDialog = document.getElementById("helpDialog");
+
+    //get form content inside dialog box
+    var dialogForm = document.getElementById("helpDialogForm");
 
     // Get the button that opens the dialog box
     var helpBtn1 = document.getElementById("helpBtn");
 
     // Get the <span> element that closes the dialog box
     var span1 = document.getElementsByClassName("close1")[0];
+
+    //Get the send message button that sends the message
+    var sendBtn = document.getElementById("sendBtn");
+
+    //Get the send message button that sends the message
+    var closeBtn = document.getElementById("closeBtn");
+
+    //Get content for sending screen
+    var sendingScreen = document.getElementById("sendingScreen");
+
+    //Get progress bar
+    var progressBar = document.getElementById("progressBar");
+
+    //Get content in finished screen
+    var finishedScreen = document.getElementById("finishedScreen");
 
     // When the user clicks on the button, open the dialog box
     helpBtn1.onclick = function() {
@@ -394,16 +438,47 @@
 
     // When the user clicks on <span> (x), close the dialog box
     span1.onclick = function() {
+        //Close dialog and reset content to input form
         helpDialog.style.display = "none";
+        finishedScreen.style.display = "none";
+        sendingScreen.style.display = "none";
+        dialogForm.style.display = "block";
+        //Clear the values in the form
+        inputFields = document.getElementsByClassName("form-input-field");
+        for(let i=0; i<=3; i++) {
+            inputFields[i].value = "";
+        }
     }
 
-    // When the user clicks anywhere outside of the dialog box, close it
-    window.onclick = function(event) {
-    if (event.target == helpDialog) {
-        helpDialog.style.display = "none";
-    }}
+    //when user clicks on send message button, change to loading screen
+    sendBtn.onclick = function() {
+        //Move dialog content to loading screen
+        dialogForm.style.display = "none";
+        sendingScreen.style.display = "block";
+        //Store the inputs from the form
+        inputFields = document.getElementsByClassName("form-input-field");
+        for(let i=0; i<=3; i++) {
+            helpQuestion.push(inputFields[i].value);
+        }
+        //Clear the values in the form
+        for(let i=0; i<=3; i++) {
+            inputFields[i].value = "";
+        }
+    }
 
-    console.log("hello");
+    //When loading screen is done, change content to sent page
+    progressBar.addEventListener("animationend", function() {
+        sendingScreen.style.display = "none";
+        finishedScreen.style.display = "block";
+    })
+
+    closeBtn.onclick = function() {
+        //Close dialog and reset content to input form
+        helpDialog.style.display = "none";
+        finishedScreen.style.display = "none";
+        sendingScreen.style.display = "none";
+        dialogForm.style.display = "block";
+    }
 
 </script>
 
