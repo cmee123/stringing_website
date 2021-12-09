@@ -8,6 +8,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <title>CathalAndPedro Stringing</title>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    
+    <script type="text/javascript">
+        function sendEmail(emailContent) {
+        Email.send({
+            Host: "smtp.gmail.com",
+            Username: "cathalandpedrostringing@gmail.com",
+            Password: "S+ringing2020",
+            To: 'cathalemee@gmail.com',
+            From: "cathalandpedrostringing@gmail.com",
+            Subject: "Sending Email using javascript",
+            Body: "Well that was easy!!",
+        })
+        .then(function (message) {
+            alert("mail sent successfully")
+            });
+        console.log("yes2");
+        }
+    </script>
 </head>
 <body>
     <!-- Navbar -->
@@ -96,7 +115,26 @@
                                 </div>
                             </div>
                             
-                            <div class="string-selector"></div>
+                            <div class="string-selector">
+                                <div class="grid">
+                                    <div class="mains-selector">
+                                        <div class="flex" id="mainsLabel">
+                                            <p><b>Prince XP</b></p>
+                                            <p class="edit-btn">Edit</p>
+                                        </div>
+                                        <div class="blue-outline-button" id="addMains">Add Mains String</div>
+                                        <input type="tension" class="form-input-field" name="mains-tension" placeholder="Mains Tension">
+                                    </div>
+                                    <div class="crosses-selector">
+                                        <div class="blue-outline-button" id="addCrosses">Add Crosses String</div>
+                                        <div class="flex" id="crossesLabel">
+                                            <p><b>Prince XP</b></p>
+                                            <p class="edit-btn">Edit</p>
+                                        </div>
+                                        <input type="tension" class="form-input-field" name="crosses-tension" placeholder="Crosses Tension">
+                                    </div>
+                                </div>
+                            </div>
 
                         </div>
 
@@ -176,7 +214,7 @@
                     </div>
                     <div class="form-control">
                         <div class="flex">
-                            <input class="form-input-field-complete" type="contact" name="phone-email" placeholder="Phone/Email" required>
+                            <input class="form-input-field-complete" type="contact" name="phone-email" placeholder="Email" required>
                         </div>
                     </div>
                     <div class="form-control">
@@ -189,7 +227,7 @@
                         <input class="form-input-field-complete" type="location" name="pref-location" placeholder="Prefered Drop-Off Location" required>
                     </div>
                     <div class="form-control">
-                        <textarea class="form-input-field-complete" name="notes" placeholder="Notes/Special Instructions" rows="4" cols="35"></textarea>
+                        <textarea name="notes" placeholder="Notes/Special Instructions" rows="4" cols="35"></textarea>
                     </div>
                     <div class="flex">
                         <div class="solid-blue-button" id="completeBtn">Complete Order</div>
@@ -260,7 +298,7 @@
                         </div>
                     </div>
                     <div class="form-control">
-                        <textarea class="form-input-field" name="message" placeholder="Message" rows="4" cols="35"></textarea>
+                        <textarea name="message" placeholder="Message" rows="4" cols="35"></textarea>
                     </div>
                     <div class="flex">
                         <div class="solid-blue-button" id="sendBtn">Send Message</div>
@@ -300,51 +338,81 @@
                 <img src="Images/prince-xp.jpg" alt="Prince XP" class="string-img">
                 <h1 class="string-name"><b>Prince XP</b></h1>
                 <h2 class="string-type">Polyester</h2>
+                <div class="flex">
+                    <div class="blue-outline-button">+</div>
+                </div>
             </div>
             <div class="string-item card fav-card">
                 <img src="Images/prince-synthetic-gut.jpg" alt="Prince Synth gut" class="string-img">
                 <h1 class="string-name"><b>Prince Synth Gut</b></h1>
                 <h2 class="string-type">Synthetic Gut</h2>
+                <div class="flex">
+                    <div class="blue-outline-button">+</div>
+                </div>
             </div>
             <div class="string-item card">
                 <img src="Images/proform-tuff.jpg" alt="Proform Tuff" class="string-img">
                 <h1 class="string-name"><b>Proform Tuff</b></h1>
                 <h2 class="string-type">Synthetic Gut</h2>
+                <div class="flex">
+                    <div class="blue-outline-button">+</div>
+                </div>
             </div>
             <div class="string-item card">
                 <img src="Images/yonnex-polytour-pro.jpg" alt="Polytour Pro" class="string-img">
                 <h1 class="string-name"><b>Polytour Pro</b></h1>
                 <h2 class="string-type">Polyester</h2>
+                <div class="flex">
+                    <div class="blue-outline-button">+</div>
+                </div>
             </div>
             <div class="string-item card">
                 <img src="Images/head-lynx.jpg" alt="Lynx" class="string-img">
                 <h1 class="string-name"><b>Lynx</b></h1>
                 <h2 class="string-type">Polyester</h2>
+                <div class="flex">
+                    <div class="blue-outline-button">+</div>
+                </div>
             </div>
             <div class="string-item card">
                 <img src="Images/wilson-nxt.jpg" alt="NXT" class="string-img">
                 <h1 class="string-name"><b>NXT</b></h1>
                 <h2 class="string-type">Multifiliment</h2>
+                <div class="flex">
+                    <div class="blue-outline-button">+</div>
+                </div>
             </div>
             <div class="string-item card">
                 <img src="Images/prince-xc.jpg" alt="Prince XC" class="string-img">
                 <h1 class="string-name"><b>Prince XC</b></h1>
                 <h2 class="string-type">Polyester</h2>
+                <div class="flex">
+                    <div class="blue-outline-button">+</div>
+                </div>
             </div>
             <div class="string-item card">
                 <img src="Images/pro-feel.jpg" alt="Pro Feel" class="string-img">
                 <h1 class="string-name"><b>Pro Feel</b></h1>
                 <h2 class="string-type">Co-Polyester</h2>
+                <div class="flex">
+                    <div class="blue-outline-button">+</div>
+                </div>
             </div>
             <div class="string-item card">
                 <img src="Images/pentapower_twisted.jpg" alt="Pentapower" class="string-img">
                 <h1 class="string-name"><b>Pentapower</b></h1>
                 <h2 class="string-type">Co-Polyester</h2>
+                <div class="flex">
+                    <div class="blue-outline-button">+</div>
+                </div>
             </div>
             <div class="string-item card">
                 <img src="Images/polylon.jpg" alt="Polylon" class="string-img">
                 <h1 class="string-name"><b>Polylon</b></h1>
                 <h2 class="string-type">Polyester</h2>
+                <div class="flex">
+                    <div class="blue-outline-button">+</div>
+                </div>
             </div>
         </div>
     </section>
@@ -407,6 +475,28 @@
             providerSelectorItem.childNodes[1].classList.add('blue-border');
         })
     })
+
+    //Update string selector form
+    var mainsLabel = document.getElementById("mainsLabel");
+    var crossesLabel = document.getElementById("crossesLabel");
+    var addMainsBtn = document.getElementById("addMains");
+    var addCrossesBtn = document.getElementById("addCrosses");
+
+    addMainsBtn.addEventListener("click", () => {
+        addMainsBtn.style.display = "none";
+        mainsLabel.style.display = "flex";
+    })
+
+    addCrossesBtn.addEventListener("click", () => {
+        addCrossesBtn.style.display = "none";
+        crossesLabel.style.display = "flex";
+    })
+
+
+
+
+
+
 
 
     // get form content when "done" is pressed
@@ -510,6 +600,8 @@
 
 
 
+
+
     // List to hold question form inputs
     var orderDetails = [];
     var contactFields = [];
@@ -564,9 +656,6 @@
         }
     }
 
-
-
-
     //when user clicks on complete order button, change to loading screen
     completeBtn.onclick = function() {
         //Move dialog content to loading screen
@@ -581,6 +670,8 @@
         for(let i=0; i<=6; i++) {
             contactFields[i].value = "";
         }
+        sendEmail(orderDetails);
+        console.log("yes");
     }
 
     //When loading screen is done, change content to order complete page
