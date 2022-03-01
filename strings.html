@@ -8,7 +8,7 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
     <script src="email.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script type="text/javascript">
@@ -19,10 +19,27 @@
     <title>CathalAndPedro Stringing</title>
 </head>
 <body>
-    <!-- Nav bar -->
+    <!-- Navbar -->
     <div class="navbar">
         <div class="container flex">
-            <div class="logo flex">
+            <div class="logo">
+                <div class="menu-wrap">
+                    <input type="checkbox" class="toggler">
+                    <div class="hamburger"><div></div></div>
+                    <div class="menu">
+                        <div>
+                            <div>
+                                <ul>
+                                    <li><a href="index.html">Home</a></li>
+                                    <li><a href="strings.html">Strings</a></li>
+                                    <li><a href="order.html">Order</a></li>
+                                    <li><a href="about.html">About</a></li>
+                                    <li><a href="tournaments.html">Tournaments</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <h1 class="logo-text large-font">CathalAndPedroStringing@gmail.com</h1>
                 <h1 class="logo-text large-font">651-504-4842</h1>
             </div>
@@ -43,7 +60,7 @@
         <div class="container grid">
             <div class="strings-showcase-text">
                 <h1 class="large-font">Strings</h1>
-                <p class="change-text">Browse our full collection of strings and select the best one for your game.</p>
+                <p class="change-text">Browse our full collection of strings and select the best one for your game. Hover over or select each string to see more information.</p>
             </div>
             <div class="strings-showcase-card card">
                 <h2><b>Want string we don't have in stock?</b></h2>
@@ -374,6 +391,32 @@
                     </div>
                 </div>
             </div>
+            <div class="string-item card">
+                <div class="card-inner">
+                    <div class="front">
+                        <img src="Images/mystery-string-img.jpg" alt="Mystery String" class="string-img circle-img">
+                        <h1 class="string-name"><b>Other</b></h1>
+                        <h2 class="string-type">Let us know!</h2>
+                        <hr>
+                        <p class="string-disc">If you don't see the string you want, let us know and we can find it!</p>
+                        <p class="string-disc"><b>Brand:</b> ?</p>
+                        <p class="string-disc"><b>Type:</b> ?</p>
+                        <p class="string-disc"><b>Gauge:</b> ?</p>
+                        <p class="string-disc"><b>Color:</b> ?</p>
+                    </div>
+                    <div class="back">
+                        <img src="Images/mystery-string-img.jpg" alt="Mystery String" class="string-img circle-img">
+                        <h1 class="string-name"><b>Other</b></h1>
+                        <h2 class="string-type">Let us know!</h2>
+                        <hr>
+                        <p class="string-disc">Each characteristic is rated on a scale of 1-10, with 10 being the most.</p>
+                        <p class="string-disc"><b>Power:</b> ?</p>
+                        <p class="string-disc"><b>Spin:</b> ?</p>
+                        <p class="string-disc"><b>Control:</b> ?</p>
+                        <p class="string-disc"><b>Durability:</b> ?</p>
+                    </div>
+                </div>
+            </div>
 
         </div>
     </section>
@@ -438,7 +481,14 @@
         $("#lastHelp").val("");
         $("#contactHelp").val("");
         $("#messageHelp").val("");
-        //Clear list containing form inputs
+        //Clear borders around the form
+        $("#firstHelp").css("border", "1.5px solid #fff");
+        $("#firstHelp").css("border-bottom", "1.5px solid #b4becb");
+        $("#lastHelp").css("border", "1.5px solid #fff");
+        $("#lastHelp").css("border-bottom", "1.5px solid #b4becb");
+        $("#contactHelp").css("border", "1.5px solid #fff");
+        $("#contactHelp").css("border-bottom", "1.5px solid #b4becb");
+        $("#messageHelp").css("border", "1.5px solid #b4becb");
     }
 
     //when user clicks on send message button, change to loading screen
@@ -467,8 +517,6 @@
             
         }
 
-        console.log("done");
-
         //Move dialog content to loading screen
         $("#errorMessageHelp").css("display", "none");
         $("#helpDialogForm").css("display", "none");
@@ -486,3 +534,9 @@
 </script>
 
 </html>
+
+<!--
+
+    Add mystery strings card to page, no dialog 
+
+-->
