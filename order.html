@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
     <script src="email.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script type="text/javascript">
@@ -44,6 +44,12 @@
         <div class="container flex">
             <p class="">Please fill out all input fields.</p>
             <span class="error-close" id="errorClose" onclick="closeError()">&times;</span>
+        </div>
+    </div>
+    <div class="incomplete-error" id="errorMessageNoRackets">
+        <div class="container flex">
+            <p class="">Please add a racket before completing order.</p>
+            <span class="error-close" id="errorClose" onclick="closeErrorNoRackets()">&times;</span>
         </div>
     </div>
 
@@ -223,28 +229,28 @@
                 <form id="completeForm">
                     <div class="grid">
                         <div class="form-control">
-                            <input class="form-input-field complete-input" type="name" name="first-name" placeholder="First Name" required>
+                            <input class="form-input-field complete-input" id="firstComplete" type="name" name="first-name" placeholder="First Name" required>
                         </div>
                         <div class="form-control">
-                            <input class="form-input-field complete-input" type="name" name="last-name" placeholder="Last Name" required>
+                            <input class="form-input-field complete-input" id="lastComplete" type="name" name="last-name" placeholder="Last Name" required>
                         </div>
                     </div>
                     <div class="form-control">
                         <div class="flex">
-                            <input class="form-input-field complete-input" type="contact" name="phone-email" placeholder="Email" required>
+                            <input class="form-input-field complete-input" id="emailComplete" type="contact" name="phone-email" placeholder="Email" required>
                         </div>
                     </div>
                     <div class="form-control">
-                        <input class="form-input-field complete-input" placeholder="Drop-Off Date" type="text" onfocus="(this.type='date')" onblur="(this.type='text')">
+                        <input class="form-input-field complete-input" id="dropComplete" placeholder="Drop-Off Date" type="text" onfocus="(this.type='date')" onblur="(this.type='text')">
                     </div>
                     <div class="form-control">
-                        <input class="form-input-field complete-input" placeholder="Pick-Up Date" type="text" onfocus="(this.type='date')" onblur="(this.type='text')">
+                        <input class="form-input-field complete-input" id="pickComplete" placeholder="Pick-Up Date" type="text" onfocus="(this.type='date')" onblur="(this.type='text')">
                     </div>
                     <div class="form-control">
-                        <input class="form-input-field complete-input" type="location" name="pref-location" placeholder="Prefered Drop-Off Location" required>
+                        <input class="form-input-field complete-input" id="locationComplete" type="location" name="pref-location" placeholder="Prefered Drop-Off Location" required>
                     </div>
                     <div class="form-control">
-                        <textarea name="notes" placeholder="Notes/Special Instructions" rows="4" cols="35"></textarea>
+                        <textarea name="notes" id="notesComplete" placeholder="Notes/Special Instructions" rows="4" cols="35"></textarea>
                     </div>
                     <div class="flex">
                         <div class="solid-blue-button" id="completeBtn" onclick="toLoadingScreen()">Complete Order</div>
@@ -299,23 +305,15 @@
                 <h1 class="bolded large-font">How can we help?</h1>
                 <p>Message us with your questions</p>
             </div>
-            
-            <!-- Incomplete Error Message -->
-            <div class="incomplete-error" id="errorMessageHelp">
-                <div class="container flex">
-                    <p class="">Please fill out all input fields.</p>
-                    <span class="error-close" id="errorClose" onclick="closeErrorHelp()">&times;</span>
-                </div>
-            </div>
             <div class="spacer"></div>
             <div class="help-dialog-form" id="helpDialogForm">
                 <form id="helpForm">
                     <div class="grid">
                         <div class="form-control">
-                            <input class="form-input-field-help help-input" id="firstNameHelp" type="name" name="first-name" placeholder="First Name" required>
+                            <input class="form-input-field-help help-input" id="firstHelp" type="name" name="first-name" placeholder="First Name" required>
                         </div>
                         <div class="form-control">
-                            <input class="form-input-field-help help-input" id="lastNameHelp" type="name" name="last-name" placeholder="Last Name" required>
+                            <input class="form-input-field-help help-input" id="lastHelp" type="name" name="last-name" placeholder="Last Name" required>
                         </div>
                     </div>
                     <div class="form-control">
@@ -630,6 +628,7 @@
     //Code for opening mystery string dialog
 
     let stringTypeSelection = "";
+    var mysteryStringObjList = [];
 
     function MysteryString(type, name, color, gauge, link, notes) {
         this.type = type,
@@ -649,6 +648,12 @@
         $("#mysteryDialog").css("display", "none");
         $(".mystery-input").val("");
         $("#stringNotes").val("");
+        stringTypeSelection = "";
+        $(".mystery-input").css("border", "1.5px solid #fff");
+        $(".mystery-input").css("border-bottom", "1.5px solid #b4becb");
+        
+
+        $("#stringNotes").css("border", "1.5px solid #b4becb");
     }
 
     function getStringInputs() {
@@ -663,22 +668,32 @@
         );
 
         if(newMysteryString.name === "") {
-            $("#errorMessageMystery").css("display", "block");
+            $("#stringName").css("border", "1.5px solid rgb(172, 0, 0)");
             return undefined;
-        } else if(newMysteryString.name != "" && newMysteryString.type === "main") {
+        } else if(newMysteryString.gauge === "") {
+            $("#stringName").css("border", "1.5px solid #fff");
+            $("#stringName").css("border-bottom", "1.5px solid #b4becb");
+            $("#stringGauge").css("border", "1.5px solid rgb(172, 0, 0)");
+            return undefined;
+        }
+        $("#stringGauge").css("border", "1.5px solid #fff");
+        $("#stringGauge").css("border-bottom", "1.5px solid #b4becb");
+        
+        if(newMysteryString.name != "" && newMysteryString.gauge != "" && newMysteryString.type === "main") {
             $("#errorMessageMystery").css("display", "none");
             $("#mainInput").css("display", "none");
             $("#mainsLabel").css("display", "flex");
             $("#mainLabel").html(newMysteryString.name);
-        } else if(newMysteryString.name != "" && newMysteryString.type === "cross") {
+        } else if(newMysteryString.name != "" && newMysteryString.gauge != "" && newMysteryString.type === "cross") {
             $("#errorMessageMystery").css("display", "none");
             $("#crossInput").css("display", "none");
             $("#crossesLabel").css("display", "flex");
             $("#crossLabel").html(newMysteryString.name);
         }
 
+        mysteryStringObjList.push(newMysteryString);
+
         //Put code here for sending us the string type selection
-        sendMailMystery(newMysteryString);
         closeMysteryDialog();
         $(".navbar").get(0).scrollIntoView();
     }
@@ -705,20 +720,20 @@
     
     
     //List to hold all order information
-    var orderDetails = [];
-
     var racketObjectList = [];
 
     var orderTotal = 0;
-    var currentRacketDetails = [];
-
-    var incorrect = 0;
 
     const root = document.querySelector(":root");
 
     //Function for error message close button
     function closeError() {
         $("#errorMessage").css("display", "none");
+    }
+
+    //Function for error message close button
+    function closeErrorNoRackets() {
+        $("#errorMessageNoRackets").css("display", "none");
     }
 
 
@@ -762,7 +777,8 @@
                     $("#" + property + "Input").css("color", "rgb(172, 0, 0)");
                 }
                 $("#" + property + "Input").css("border", "1.5px solid rgb(172, 0, 0)");
-                console.log(property);
+                orderTotal -= price;
+                price = 0;
                 $(".navbar").get(0).scrollIntoView();
                 return undefined;
             }
@@ -796,6 +812,7 @@
             $("#noRacketFiller").css("display", "none");
             $("#racketItem1").css("display", "block");
         } else if(racketObjectList.length > 1) {
+            console.log("")
             $("#racketItem1").clone().prop("id", "racketItem" + newRacket.number).appendTo(".order-summary-list");
         } 
 
@@ -844,9 +861,18 @@
 
 
     // List to hold contact form inputs
-    var contactFields = [];
 
-    let incompleteFinishDialog = 0;
+    function CompleteDialogForm(first, last, email, drop, pick, location, notes, rackets, mysteryString) {
+        this.first = first,
+        this.last = last,
+        this.email = email,
+        this.drop = drop,
+        this.pick = pick,
+        this.location = location,
+        this.notes = notes,
+        this.rackets = rackets,
+        this.mysteryString = mysteryString
+    }
 
     function closeErrorFinish() {
         $("#errorMessageFinish").css("display", "none");
@@ -854,7 +880,13 @@
 
     // When the user clicks on the button, open the dialog box
     function openFinishDialog() {
-        $("#completeDialog").css("display", "block");
+        if($("#racketItem1").css("display") === "block") {
+            $("#completeDialog").css("display", "block");
+            $("#errorMessageNoRackets").css("display", "none");
+        } else {
+            $("#errorMessageNoRackets").css("display", "block");
+        }
+        
     }
 
     // When the user clicks on <span> (x), close the dialog box
@@ -864,38 +896,88 @@
         $("#orderCompleteScreen").css("display", "none");
         $("#completingOrderScreen").css("display", "none");
         $("#completeDialogForm").css("display", "block");
+        // Clear form content
+        $("#firstComplete").val("");
+        $("#lastComplete").val("");
+        $("#emailComplete").val("");
+        $("#dropComplete").val("");
+        $("#pickComplete").val("");
+        $("#locationComplete").val("");
+        $("#notesComplete").val("");
+        // Reset error borders
+        $("#firstComplete").css("border", "1.5px solid #fff");
+        $("#lastComplete").css("border", "1.5px solid #fff");
+        $("#emailComplete").css("border", "1.5px solid #fff");
+        $("#dropComplete").css("border", "1.5px solid #fff");
+        $("#pickComplete").css("border", "1.5px solid #fff");
+        $("#locationComplete").css("border", "1.5px solid #fff");
+        $("#notesComplete").css("border", "1.5px solid #b4becb");
+        //Clear borders around the form
+        $("#firstComplete").css("border-bottom", "1.5px solid #b4becb");
+        $("#lastComplete").css("border-bottom", "1.5px solid #b4becb");
+        $("#emailComplete").css("border-bottom", "1.5px solid #b4becb");
+        $("#dropComplete").css("border-bottom", "1.5px solid #b4becb");
+        $("#pickComplete").css("border-bottom", "1.5px solid #b4becb");
+        $("#locationComplete").css("border-bottom", "1.5px solid #b4becb");
 
-        //Clear the values in the form
-        contactFields = document.getElementsByClassName("complete-input");
-        for(let i=0; i<=3; i++) {
-            contactFields[i].value = "";
-        }
     }
 
     //when user clicks on complete order button, change to loading screen
     function toLoadingScreen() {
+
+        let completeObj = new CompleteDialogForm(
+            $("#firstComplete").val(),
+            $("#lastComplete").val(),
+            $("#emailComplete").val(),
+            $("#dropComplete").val(),
+            $("#pickComplete").val(),
+            $("#locationComplete").val(),
+            $("#notesComplete").val(),
+            racketObjectList,
+            mysteryStringObjList
+        )
+
+        // check if all form sections are filled out
+        for(let property in completeObj) {
+            // if they aren't, raise error message
+            if(completeObj[property] === "") {
+                $("#" + property + "Complete").css("border", "1.5px solid rgb(172, 0, 0)");
+                return undefined;
+            }
+            if(property != "notes") {
+                $("#" + property + "Complete").css("border", "1.5px solid #fff");
+                $("#" + property + "Complete").css("border-bottom", "1.5px solid #b4becb");
+            } else {
+                $("#" + property + "Complete").css("border", "1.5px solid #b4becb");
+            }
+            
+        }
+
         //Move dialog content to loading screen
         $("#completeDialogForm").css("display", "none");
         $("#completingOrderScreen").css("display", "block");
+        sendMailComplete(completeObj);
 
-        //Store the inputs from the form and clear values
-        contactFields = document.getElementById("completeForm").elements;
-        for(let i=0; i<=6; i++) {
-            
-
-            orderDetails.push(contactFields[i].value);
-            contactFields[i].value = "";
-        }
-
-        for(let k=orderDetails.length-7; k>=orderDetails.length-6; k--) {
-            if(orderDetails[k] === "") {
-                incompleteFinishDialog += 1;
+        //Clear content in order summary list
+        if(racketObjectList.length > 1) {
+            for(let i=1; i<racketObjectList.length; i++) {
+                console.log(i+1);
+                $("#racketItem" + (i+1)).remove();
             }
-        }
+        } 
 
-        if(incompleteFinishDialog > 0) {
+        //Clear variables
+        orderTotal = 0;
+        mysteryStringObjList = [];
+        racketObjectList = [];
+        orderTotal = 0;
 
-        }
+        $("#totalOrderPrice").html("Total: $0.00");
+
+        $("#racketItem1").css("display", "none");
+        $("#noRacketFiller").css("display", "block");
+
+        console.log("done");
 
     }
 
@@ -932,19 +1014,26 @@
         $("#sendingScreen").css("display", "none");
         $("#helpDialogForm").css("display", "block");
         //Clear the values in the form
-        $("#firstNameHelp").val("");
-        $("#lastNameHelp").val("");
+        $("#firstHelp").val("");
+        $("#lastHelp").val("");
         $("#contactHelp").val("");
         $("#messageHelp").val("");
-        //Clear list containing form inputs
+        //Clear borders around the form
+        $("#firstHelp").css("border", "1.5px solid #fff");
+        $("#firstHelp").css("border-bottom", "1.5px solid #b4becb");
+        $("#lastHelp").css("border", "1.5px solid #fff");
+        $("#lastHelp").css("border-bottom", "1.5px solid #b4becb");
+        $("#contactHelp").css("border", "1.5px solid #fff");
+        $("#contactHelp").css("border-bottom", "1.5px solid #b4becb");
+        $("#messageHelp").css("border", "1.5px solid #b4becb");
     }
 
     //when user clicks on send message button, change to loading screen
     function sendMessage() {
 
         let questionObj = new Question(
-            $("#firstNameHelp").val(),
-            $("#lastNameHelp").val(),
+            $("#firstHelp").val(),
+            $("#lastHelp").val(),
             $("#contactHelp").val(),
             $("#messageHelp").val()
         );
@@ -953,10 +1042,19 @@
         for(let property in questionObj) {
             // if they aren't, raise error message
             if(questionObj[property] === "") {
-                $("#errorMessageHelp").css("display", "block");
+                $("#" + property + "Help").css("border", "1.5px solid rgb(172, 0, 0)");
                 return undefined;
             }
+            if(property != "message") {
+                $("#" + property + "Help").css("border", "1.5px solid #fff");
+                $("#" + property + "Help").css("border-bottom", "1.5px solid #b4becb");
+            } else {
+                $("#" + property + "Help").css("border", "1.5px solid #b4becb");
+            }
+            
         }
+
+        console.log("done");
 
         //Move dialog content to loading screen
         $("#errorMessageHelp").css("display", "none");
@@ -1008,3 +1106,10 @@
 </script>
 
 </html>
+
+<!--
+
+    DONE: Reset all variables after order is completed
+    DONE: Correct error notifications for mystery string dialog
+    
+-->
