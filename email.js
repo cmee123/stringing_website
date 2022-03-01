@@ -1,3 +1,4 @@
+//Send Mail
 function sendMailHelp(content) {
     emailjs.send("service_4ifttdl", "template_brve9ea", content)
     .then(function(res){
