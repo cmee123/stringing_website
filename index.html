@@ -7,14 +7,31 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
     <title>CathalAndPedro Stringing</title>
 </head>
 <body>
-    <!-- Navba r -->
+    <!-- Navbar -->
     <div class="navbar">
         <div class="container flex">
-            <div class="logo flex">
+            <div class="logo">
+                <div class="menu-wrap">
+                    <input type="checkbox" class="toggler">
+                    <div class="hamburger"><div></div></div>
+                    <div class="menu">
+                        <div>
+                            <div>
+                                <ul>
+                                    <li><a href="index.html">Home</a></li>
+                                    <li><a href="strings.html">Strings</a></li>
+                                    <li><a href="order.html">Order</a></li>
+                                    <li><a href="about.html">About</a></li>
+                                    <li><a href="tournaments.html">Tournaments</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <h1 class="logo-text large-font">CathalAndPedroStringing@gmail.com</h1>
                 <h1 class="logo-text large-font">651-504-4842</h1>
             </div>
@@ -55,19 +72,25 @@
 
     <!-- Stats -->
     <section class="stats-container">
-        <div class="container grid-3 stats-text">
+        <div class="container flex stats-text">
             <div class="stat-container">
-                <i class="fas fa-tags fa-3x"></i>
+                <div class="flex">
+                    <i class="fas fa-tags fa-3x"></i>
+                </div>
                 <h3>50%</h3>
                 <p class="text-secondary">Cheaper than other local stringers</p>
             </div>
             <div class="stat-container">
-                <i class="fas fa-history fa-3x"></i>
+                <div class="flex">
+                    <i class="fas fa-history fa-3x"></i>
+                </div>
                 <h3>12h-24h</h3>
                 <p class="text-secondary">Turnaround time</p>
             </div>
             <div class="stat-container">
-                <i class="fas fa-people-arrows fa-3x"></i>
+                <div class="flex">
+                    <i class="fas fa-people-arrows fa-3x"></i>
+                </div>
                 <h3>600</h3>
                 <p class="text-secondary change-text">Rackets strung</p>
             </div>
@@ -186,6 +209,11 @@
                 <p>CathalAndPedroStringing@gmail.com</p>
                 <p>651-504-4842</p>
             </div>
+            <div class="social">
+                <a href="#"><i class="fab fa-instagram fa-2x"></i></a>
+                <a href="#"><i class="fab fa-twitter fa-2x"></i></a>
+            </div>
+
             <nav>
                 <ul>
                     <li><a href="index.html">Home</a></li>
@@ -195,14 +223,13 @@
                     <li><a href="tournaments.html">Tournaments</a></li>
                 </ul>
             </nav>
-            <div class="social">
-                <a href="#"><i class="fab fa-github fa-2x"></i></a>
-                <a href="#"><i class="fab fa-facebook fa-2x"></i></a>
-                <a href="#"><i class="fab fa-instagram fa-2x"></i></a>
-                <a href="#"><i class="fab fa-twitter fa-2x"></i></a>
-            </div>
+            
         </div>
     </footer>
     
 </body>
 </html>
+
+<!--
+    Get rid of scrollbar during opening animation
+-->
