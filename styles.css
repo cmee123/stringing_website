@@ -234,6 +234,12 @@ textarea:focus {
   height: 5px;
 }
 
+.logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 /* Footer */
 .footer {
   padding: 4rem 0;
@@ -685,17 +691,11 @@ textarea:focus {
 }
 
 /* Stats */
+
 .stats-container {
-  -webkit-transform: skewY(-3deg);
-          transform: skewY(-3deg);
+  transform: skewY(-3deg);
   height: 350px;
   background-color: #0041A9;
-  -webkit-animation: 1s ease-out 0s 1 slideInLeftStats;
-          animation: 1s ease-out 0s 1 slideInLeftStats;
-}
-
-.stats-container i {
-  margin-left: 133.33px;
 }
 
 .stats-container h3 {
@@ -709,15 +709,14 @@ textarea:focus {
 }
 
 .stats-text {
-  -webkit-transform: skewY(3deg);
-          transform: skewY(3deg);
-  margin-left: auto;
-  margin-right: auto;
+  transform: skewY(3deg);
 }
 
 .stat-container {
   color: #fff;
+  width: 100%;
 }
+
 
 /* Pages Showcase */
 .pages-showcase img {
@@ -804,7 +803,7 @@ textarea:focus {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 80%;
+  width: 100%;
   gap: 45px;
 }
 
@@ -868,7 +867,7 @@ textarea:focus {
 
 .strings .card, .strings .pricing-card {
   width: 90%;
-  height: 525px;
+  height: 550px;
   margin-bottom: 20px;
   margin-top: 20px;
   background-color: transparent;
@@ -1429,4 +1428,419 @@ textarea:focus {
 .mystery-string-dialog .solid-blue-button {
   margin-top: 10px;
 }
+
+/* Hamburger Menu */
+
+/* MENU STYLES */
+.menu-wrap {
+  display: none;
+  z-index: 1;
+}
+
+.menu-wrap .toggler {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  opacity: 0;
+}
+
+.menu-wrap .hamburger {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 60px;
+  height: 60px;
+  padding: 1rem;
+  background: var(--primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Hamburger Line */
+.menu-wrap .hamburger > div {
+  position: relative;
+  flex: none;
+  width: 100%;
+  height: 2px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s ease;
+}
+
+/* Hamburger Lines - Top & Bottom */
+.menu-wrap .hamburger > div::before,
+.menu-wrap .hamburger > div::after {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  top: -10px;
+  width: 100%;
+  height: 2px;
+  background: inherit;
+}
+
+/* Moves Line Down */
+.menu-wrap .hamburger > div::after {
+  top: 10px;
+}
+
+/* Toggler Animation */
+.menu-wrap .toggler:checked + .hamburger > div {
+  transform: rotate(135deg);
+}
+
+/* Turns Lines Into X */
+.menu-wrap .toggler:checked + .hamburger > div:before,
+.menu-wrap .toggler:checked + .hamburger > div:after {
+  top: 0;
+  transform: rotate(90deg);
+}
+
+/* Rotate On Hover When Checked */
+.menu-wrap .toggler:checked:hover + .hamburger > div {
+  transform: rotate(225deg);
+}
+
+/* Show Menu */
+.menu-wrap .toggler:checked ~ .menu {
+  visibility: visible;
+}
+
+.menu-wrap .toggler:checked ~ .menu > div {
+  transform: scale(1);
+  transition-duration: 0.75s;
+}
+
+.menu-wrap .toggler:checked ~ .menu > div > div {
+  opacity: 1;
+  transition:  opacity 0.4s ease 0.4s;
+}
+
+.menu-wrap .menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+}
+
+.menu-wrap .menu > div {
+  background: rgba(24, 39, 51 , 0.85);
+  border-radius: 50%;
+  width: 200vw;
+  height: 200vw;
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  transform: scale(0);
+  transition: all 0.4s ease;
+}
+
+.menu-wrap .menu > div > div {
+  text-align: center;
+  max-width: 90vw;
+  max-height: 100vh;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.menu-wrap .menu > div > div > ul > li {
+  
+  list-style: none;
+  color: #fff;
+  font-size: 15px;
+  padding: 10px;
+}
+
+.menu-wrap .menu > div > div > ul > li > a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.4s ease;
+}
+
+.menu-wrap .menu > div > div > ul > li > a:hover {
+  border-bottom: 2px #fff solid;
+}
 /*# sourceMappingURL=styles.css.map */
+
+@media(max-width: 1000px) {
+  .navbar {
+      height: 120px;
+  }
+  .navbar .flex {
+      flex-direction: column;
+      gap: 10px;
+      justify-content: center;
+      padding: 0px;
+  }
+
+  .logo {
+      gap: 15px;
+  }
+
+  .navbar h1 {
+      margin-right: 0px;
+  }
+
+  .navbar ul {
+      padding: 10px;
+      background: #002b70;
+      border-radius: 25px;
+  }
+
+  .navbar a {
+      padding-bottom: 5px;
+  }
+
+  .strings .grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+}
+
+@media(max-width: 930px) {
+  .strings-showcase {
+    height: auto;
+  }
+}
+
+@media(max-width: 880px) {
+  .showcase img {
+    justify-self: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+
+  .showcase .grid {
+      gap: 10px;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr;
+  }
+  .showcase {
+      height: auto;
+      margin-top: 0px;
+  }
+
+  .showcase-text {
+      text-align: center;
+      margin-top: 40px;
+  }
+
+  .pages-showcase .grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+
+  .pages-showcase .card {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .pages-showcase .card .grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+  }
+
+  .pricing {
+    height: auto;
+  }
+
+  .pricing .grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: 20px;
+  }
+
+  .pricing .grid > *:first-child, .pricing .grid-3 > *:first-child {
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 1;
+    grid-column: 1 / span 1;
+  }
+  
+  .pricing .grid > *:last-child, .pricing .grid-3 > *:last-child {
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 1;
+    grid-column: 1 / span 1;
+  }
+
+  .pricing .grid .pricing-card {
+    width: 80%;
+  }
+
+}
+
+@media(max-width: 800px) {
+  .bio {
+    height: auto;
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+
+  .bio .grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+
+  .bio img {
+    width: 50%;
+  }
+
+  .strings .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media(max-width: 700px) {
+  .location .grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    padding-bottom: 30px;
+    text-align: center;
+  }
+  .location {
+    height: 450px;
+  }
+}
+
+@media(max-width: 620px) {
+  .pages-showcase .card {
+    width: 95%;
+  }
+
+  .stats-container .flex {
+      flex-direction: column;
+      padding-bottom: 20px;
+      gap: 20px;
+  }
+
+  .stat-container .flex {
+      flex-direction: row;
+      margin-top: 20px;
+      padding-bottom: 0px;
+  }
+
+  .stats-container {
+      height: auto;
+  }
+
+  .grid-3 {
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 1fr 1fr;
+      text-align: center;
+      gap: 0px;
+  }
+
+  .bio img {
+    width: 80%;
+  }
+
+  .strings-showcase .grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.4fr 0.6fr;
+    text-align: center;
+    padding-bottom: 20px;
+    padding-top: 20px;
+  }
+
+  .strings .grid {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+@media(max-width: 500px) {
+  .pricing .grid .pricing-card {
+    width: 100%;
+  }
+  .pricing .grid .pricing-card p {
+    font-size: 20px;
+  }
+
+  .navbar {
+    height: auto;
+    text-align: center;
+  }
+
+  .navbar ul {
+      display: none;
+  }
+
+  .navbar .menu-wrap ul {
+      display: inline-block;
+  }
+
+  .menu-wrap {
+      display: inline-block;
+  }
+
+  .menu-wrap .toggler {
+      display: inline-block;
+  }
+
+  .logo {
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 10px;
+  }
+
+  .navbar h1 {
+      margin-top: 0px;
+      margin-bottom: 0px;
+  }
+
+  .bio img {
+    width: 90%;
+  }
+}
+
+@media(max-width: 450px) {
+  .location img {
+    width: 95%;
+  }
+
+  .pages-showcase .card .grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.7fr 0.3fr;
+  }
+}
+
+@media(max-width: 400px) {
+  .blurb {
+    height: 200px;
+  }
+
+  .navbar h1 {
+    font-size: 17px;
+  }
+
+  .bio .grid {
+    grid-template-rows: 0.35fr 0.75fr;
+  }
+  .showcase img {
+    width: 90%;
+  }
+}
+
+@media(max-width: 350px) {
+
+  .navbar h1 {
+    font-size: 15px;
+  }
+}
