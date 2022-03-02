@@ -1,4 +1,4 @@
-/*  variables */
+/* variables */
 /* Base Styles */
 * {
   -webkit-box-sizing: border-box;
@@ -926,6 +926,10 @@ textarea:focus {
   margin-bottom: 10px;
 }
 
+.strings .flex {
+  height: auto;
+}
+
 .bio-showcase {
   background-color: #0041A9;
   height: 300px;
@@ -1612,11 +1616,38 @@ textarea:focus {
     grid-template-columns: 1fr 1fr 1fr;
   }
 
+  .strings-library .grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
 }
 
-@media(max-width: 930px) {
+@media(max-width: 950px) {
   .strings-showcase {
     height: auto;
+  }
+
+  .order-page-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    height: auto;
+    gap: 20px;
+  }
+
+  .order-page-grid > *:first-child {
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 1;
+    grid-column: 1 / span 1;
+  }
+
+  .order-page-content {
+    height: auto;
+  }
+
+  .order-page-content .order-info {
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
@@ -1684,6 +1715,16 @@ textarea:focus {
     width: 80%;
   }
 
+  .order-help .card {
+    width: 90%;
+  }
+
+}
+
+@media(max-width: 820px) {
+  .strings-library .grid {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 @media(max-width: 800px) {
@@ -1720,6 +1761,7 @@ textarea:focus {
 }
 
 @media(max-width: 620px) {
+
   .pages-showcase .card {
     width: 95%;
   }
@@ -1762,6 +1804,30 @@ textarea:focus {
   .strings .grid {
     grid-template-columns: 1fr;
   }
+
+  .order-page-content .racket-info-form {
+    height: auto;
+    margin-bottom: 10px;
+  }
+
+  .order-page-content .racket-form-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+
+  .order-page-content .order-page-grid {
+    grid-template-rows: auto auto;
+  }
+
+  .order-info .grid {
+    height: auto;
+  }
+
+  .strings-library .grid {
+    grid-template-columns: 1fr;
+  }
+
+
 
 }
 
@@ -1808,6 +1874,15 @@ textarea:focus {
   .bio img {
     width: 90%;
   }
+
+  .order-page-content .order-info {
+    width: 95%;
+  }
+
+  .progress-bar .progress-line {
+    width: 35px;
+    height: 8px;
+  }
 }
 
 @media(max-width: 450px) {
@@ -1818,6 +1893,26 @@ textarea:focus {
   .pages-showcase .card .grid {
     grid-template-columns: 1fr;
     grid-template-rows: 0.7fr 0.3fr;
+  }
+
+  .order-help .card {
+    width: 100%;
+  }
+
+  .progress-bar .progress-line {
+    width: 8px;
+    height: 35px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .progress-bar .progress-point {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .progress-bar .progress-bar-wrapper {
+    flex-direction: column;
   }
 }
 
